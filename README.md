@@ -36,14 +36,16 @@ The model's dynamics are driven by the following fixed parameters. This is essen
 * **Max Treatment Kill Rate** ($P_{\text{kill, max}}$): $0.85$ (in the Green region).
 
 ***
-###Dynamic Visualizations
+### Dynamic Visualizations
 
-##Homeostasis
+## Homeostasis
 ![task5_homeostasis](https://github.com/user-attachments/assets/a63cd7a7-ad1b-44ee-83c4-91bdd110346d)
+***
 
-
-##Cancer Dynamics
+## Cancer Dynamics
 ![task6_introducing_cancer_cell](https://github.com/user-attachments/assets/5f3ddfa9-9b52-4e44-ab34-efaf6df6f92c)
 
-##Radiation Zaps
+***
+
+## Radiation Zaps
 ![task7_radiation_therp](https://github.com/user-attachments/assets/844bfd7d-2af0-42a0-818e-4c32b19cc6d2)
