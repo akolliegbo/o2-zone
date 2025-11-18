@@ -56,14 +56,35 @@ public class Environment {
     
     // i guess we need to visually show the oxygen too so cells know what's up
     // now this returns an actual color object for the display panel
-    public Color getColorForOxygen(double oxygenLevel) {
-        // okay if its super high its like a vibrant green for life
-        if (oxygenLevel > 0.8) return Color.GREEN;
-        // mid level is fine maybe yellow for caution
-        else if (oxygenLevel > 0.4) return Color.YELLOW;
-        // low oxygen is like super stressful and red for danger
-        else return Color.RED;
-    } 
+// this returns a smoothly interpolated color object for the display panel
+public Color getColorForOxygen(double oxygenLevel) {
+    // Normalize O2 level to a 0.0 to 1.0 scale based on the environment's range
+    // O2_NORM is 0.0 at MIN_O2 (0.1) and 1.0 at MAX_O2 (1.0)
+    double o2Range = MAX_O2 - MIN_O2;
+    double o2Norm = Math.max(0.0, Math.min(1.0, (oxygenLevel - MIN_O2) / o2Range));
+
+    int r, g, b;
+
+    // Transition from Red (low O2) -> Yellow (mid O2) -> Green (high O2)
+    
+    if (o2Norm < 0.5) {
+        // Red (o2Norm=0) to Yellow (o2Norm=0.5)
+        // Red is 255, Green transitions from 0 to 255
+        r = 255;
+        g = (int) (o2Norm * 2.0 * 255.0); // 0.0 -> 1.0
+        b = 0;
+    } else {
+        // Yellow (o2Norm=0.5) to Green (o2Norm=1.0)
+        // Green is 255, Red transitions from 255 to 0
+        r = (int) ((1.0 - o2Norm) * 2.0 * 255.0); // 1.0 -> 0.0
+        g = 255;
+        b = 0;
+    }
+
+    // Slightly tone down the pigments by mixing with gray/black (making it darker/richer)
+    int shade = 190; // Scale factor to dim the color (max 255)
+    return new Color(r * shade / 230, g * shade / 230, b * shade / 230);
+}
     
     // maybe a helper function for the cell to check if the spot it wants to move to is empty
     public boolean isLocationEmpty(int x, int y) {

@@ -6,10 +6,22 @@ public class Cell {
     private int y;
     private boolean isAlive = true;
     private final Environment environment;
-    protected java.awt.Color color = java.awt.Color.BLACK;
+    protected java.awt.Color color = java.awt.Color.gray; // default cell color
+    private java.awt.Color lineageColor = null; 
+    private boolean isLineageTracked = false;
 
     // internal counter to limit divisions for homeostasis like a hayflick limit thing
     private int divisionCounter = 5; 
+
+    public void startLineageTracking(java.awt.Color color) {
+    this.isLineageTracked = true;
+    this.lineageColor = color;
+    }
+
+    // for the display panel to check and use the lineage color
+    public java.awt.Color getLineageColor() {
+        return this.lineageColor;
+    }
 
     public Environment getEnvironment() {
         return environment;
@@ -82,6 +94,11 @@ public class Cell {
                     Cell newCell = new Cell(spawnX, spawnY, environment);
                     // the new cell gets the same counter as the parent at time of division
                     newCell.divisionCounter = this.divisionCounter; 
+
+                    if (this.isLineageTracked) {
+                    // If the parent is tracked, the daughter is tracked with the same color
+                      newCell.startLineageTracking(this.lineageColor);
+                    }
                     environment.placeCell(newCell, spawnX, spawnY);
                     // im done im too tired now
                     return; 

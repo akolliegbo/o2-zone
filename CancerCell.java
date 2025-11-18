@@ -5,13 +5,14 @@ public class CancerCell extends Cell {
     // we'll call them 'cancer_threshold' and 'cancer_prob'
     private static final double THETA_D_CANCER = 0.45; // new, lower division threshold (now includes yellow region)
     private static final double P_DIV_CANCER = 0.75; // 75% chance to divide (higher than 50% normal)
-
+    private boolean isWarburgResistant = false;
     // constructor
+    
     public CancerCell(int x, int y, Environment env) {
         super(x, y, env); // call the parent cell constructor
         // important: we set the counter to a value that signifies unlimited growth
         // by making it large or setting a flag, but for simplicity, we just ignore it in decideWhatToDo()
-        this.color = java.awt.Color.MAGENTA; // cancer cells are magenta for visibility
+        this.color = java.awt.Color.darkGray; // cancer cells are magenta for visibility
     }
 
     // this is the new cancer brain where the immortal decisions are made
@@ -24,6 +25,14 @@ public class CancerCell extends Cell {
         // 1. Lethality Check (Same as normal cell - cancer still dies in deep hypoxia)
         // this keeps the model realistic, as cancer still needs some energy
         if (o2 < getEnvironment().MIN_O2 + 0.05) { 
+            die();
+            return;
+        }
+
+        double lethalThreshold = isWarburgResistant ? 0.05 : Environment.MIN_O2 + 0.05;
+
+        // if the oxygen is below even the resistant threshold, they finally die
+        if (o2 < lethalThreshold) { 
             die();
             return;
         }
@@ -51,6 +60,11 @@ public class CancerCell extends Cell {
             // if o2 is below the cancer threshold, it still moves to find a better spot
             move();
         }
+    }
+
+    public void acquireWarburgResistance() {
+        // omg we survived the radiation so now we can evolve to be better than normal cells
+        this.isWarburgResistant = true;
     }
 
     // the divide method must be overridden to NOT decrease the division counter, 

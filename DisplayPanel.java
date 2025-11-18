@@ -6,7 +6,7 @@ import java.awt.Dimension;
 // this is where the magic visuals happen like a little art canvas
 public class DisplayPanel extends JPanel {
     private final Environment environment;
-    private final int cellSize = 10; // how big each cell square is like pixels
+    private final int cellSize = 8; // how big each cell square is like pixels
 
     // constructor
     public DisplayPanel(Environment env) {
@@ -35,12 +35,21 @@ public class DisplayPanel extends JPanel {
             for (int x = 0; x < environment.getWidth(); x++) {
                 Cell cell = environment.getCellAt(x, y);
                 if (cell != null) {
-                    // if there's a cell let's make it easy to see like a black square
-                   // g.setColor(Color.BLACK);
-                    // or maybe a white dot to make it stand out more against the background?
-                    // let's try black for now, feels more sciency
-                    g.setColor(cell.getColor());
-                    g.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                        java.awt.Color drawColor;
+                    
+                    // --- CRUCIAL: COLOR PRIORITY CHECK ---
+                    if (cell.getLineageColor() != null) {
+                        // Task 5/6: Use the distinct lineage color (Pink or Purple)
+                        drawColor = cell.getLineageColor();
+                    } else {
+                        // Default: Use the cell's base color (White or Cyan)
+                        drawColor = cell.getColor();
+                    }
+                    // --- END COLOR PRIORITY CHECK ---
+
+                    g.setColor(drawColor);
+                    g.fillOval(x
+                     * cellSize, y * cellSize, cellSize, cellSize);
                     // if you wanted a more detailed cell (like a circle) you'd use fillOval
                     
                 }

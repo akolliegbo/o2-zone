@@ -14,10 +14,11 @@ public class Simulation {
     private final Environment environment = new Environment();
     // a list or collection to hold all the active Cell agents
     private final List<Cell> cellAgents = new ArrayList<>();
-    
+    private final RadiationTherapy therapy = new RadiationTherapy(environment); // <--- INITIALIZED HERE
+
     // simulation parameters
     private final int MAX_STEPS = 200; 
-    private final int DELAY = 1000; // your 1000ms delay
+    private final int DELAY = 100; // milliseconds between steps
     private int stepCount = 0; // to track our progress
 
     private JFrame frame;
@@ -37,12 +38,21 @@ public class Simulation {
             }
         }
 
+        if (cellAgents.size() >= 5) {
+            Cell normalCellToTrack = cellAgents.get(4);
+            // Define a bright Pink color for tracking normal lineage
+            java.awt.Color pink = new java.awt.Color(255, 105, 180); 
+            normalCellToTrack.startLineageTracking(pink);
+        }
+
         // lets put one cancer cell down to disrupt homeostasis
         int cancerX = 15; // slightly away from the starting normal cells
         int cancerY = environment.getHeight() / 2;
         if (environment.isLocationEmpty(cancerX, cancerY)) {
             // create a CancerCell instead of a Cell
             CancerCell patientZero = new CancerCell(cancerX, cancerY, environment);
+            //java.awt.Color purple = java.awt.Color.magenta; 
+            //patientZero.startLineageTracking(purple);
             cellAgents.add(patientZero); // use the same list, but ensure all agents are updated
             environment.placeCell(patientZero, cancerX, cancerY);
         }
@@ -105,7 +115,11 @@ public class Simulation {
                 
                 stepCount++; // advance the step
                 stepSimulation(); // run one step of logic
-                
+
+                if (stepCount == 50 || stepCount == 100) {
+                // we apply the dose BEFORE running the step logic
+                therapy.applyDose(cellAgents, stepCount); // pass the current step count
+            }
                 // check if we should stop
                 if (stepCount >= MAX_STEPS) {
                     System.out.println("simulation finished omg im exhausted");
