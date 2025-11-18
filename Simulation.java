@@ -36,6 +36,16 @@ public class Simulation {
                 environment.placeCell(newCell, startX, startY);
             }
         }
+
+        // lets put one cancer cell down to disrupt homeostasis
+        int cancerX = 15; // slightly away from the starting normal cells
+        int cancerY = environment.getHeight() / 2;
+        if (environment.isLocationEmpty(cancerX, cancerY)) {
+            // create a CancerCell instead of a Cell
+            CancerCell patientZero = new CancerCell(cancerX, cancerY, environment);
+            cellAgents.add(patientZero); // use the same list, but ensure all agents are updated
+            environment.placeCell(patientZero, cancerX, cancerY);
+        }
     }
 
     // setting up the actual window for the simulation

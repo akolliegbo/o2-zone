@@ -36,11 +36,13 @@ public class DisplayPanel extends JPanel {
                 Cell cell = environment.getCellAt(x, y);
                 if (cell != null) {
                     // if there's a cell let's make it easy to see like a black square
-                    g.setColor(Color.BLACK);
+                   // g.setColor(Color.BLACK);
                     // or maybe a white dot to make it stand out more against the background?
                     // let's try black for now, feels more sciency
+                    g.setColor(cell.getColor());
                     g.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
                     // if you wanted a more detailed cell (like a circle) you'd use fillOval
+                    
                 }
             }
         }

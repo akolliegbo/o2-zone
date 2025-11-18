@@ -6,9 +6,18 @@ public class Cell {
     private int y;
     private boolean isAlive = true;
     private final Environment environment;
-    
+    protected java.awt.Color color = java.awt.Color.BLACK;
+
     // internal counter to limit divisions for homeostasis like a hayflick limit thing
     private int divisionCounter = 5; 
+
+    public Environment getEnvironment() {
+        return environment;
+    }
+    // getter for the cell's color
+    public java.awt.Color getColor() {
+        return this.color;
+    }
     
     // constructor
     public Cell(int x, int y, Environment env) {
