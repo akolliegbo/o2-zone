@@ -7,15 +7,15 @@ public class Cell {
     private boolean isAlive = true;
     private final Environment environment;
     protected java.awt.Color color = java.awt.Color.gray; // default cell color
-    private java.awt.Color lineageColor = null; 
-    private boolean isLineageTracked = false;
+    protected java.awt.Color lineageColor = null; 
+    protected boolean isLineageTracked = false;
 
     // internal counter to limit divisions for homeostasis like a hayflick limit thing
     private int divisionCounter = 5; 
 
     public void startLineageTracking(java.awt.Color color) {
-    this.isLineageTracked = true;
-    this.lineageColor = color;
+        this.isLineageTracked = true;
+        this.lineageColor = color;
     }
 
     // for the display panel to check and use the lineage color

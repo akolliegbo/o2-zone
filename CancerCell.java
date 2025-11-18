@@ -83,6 +83,11 @@ public class CancerCell extends Cell {
                     // found a spot! make a baby cancer cell
                     // crucial: we create a new CancerCell, not a new Cell
                     CancerCell newCell = new CancerCell(spawnX, spawnY, getEnvironment()); 
+
+                    if (this.isLineageTracked) {
+                    // If the parent is tracked, the daughter is tracked with the same color
+                    newCell.startLineageTracking(this.lineageColor);
+                    }   
                     // crucial: do NOT call divisionCounter--
                     getEnvironment().placeCell(newCell, spawnX, spawnY);
                     return; 
