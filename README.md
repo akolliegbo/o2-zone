@@ -3,7 +3,9 @@ like the twilight zone but its o2
 
 ***
 
-I had a lot of fun with this exam, I love ABMs and THIS is what I wanna be doing in my PhD. It challenged me to this simplify the scope of my code while in a biologically relevant context and raised a lot of good thoughts and questions that I wouldn't have had a few months ago. In the future I will look back at this model and chuckle at its juvinile nature, so for now I look forward to all the research in my years to come! Now on to the cool stuff...
+THIS is what I wanna be doing in my PhD well maybe not like this this but yk.  In the future I will look back at this model and chuckle at its juvinile nature, so for now I look forward to all the research in my years to come! 
+
+Now on to the cool stuff...
 
 ## Dynamic Visualizations
 
