@@ -3,6 +3,23 @@ like the twilight zone but its o2
 
 ***
 
+I had a lot of fun with this exam, I love ABMs and THIS is what I wanna be doing in my PhD. It challenged me to this simplify the scope of my code while in a biologically relevant context and raised a lot of good thoughts and questions that I wouldn't have had a few months ago. In the future I will look back at this model and chuckle at its juvinile nature, so for now I look forward to all the research in my years to come! Now on to the cool stuff...
+
+## Dynamic Visualizations
+
+### Homeostasis
+![task5_homeostasis](https://github.com/user-attachments/assets/a63cd7a7-ad1b-44ee-83c4-91bdd110346d)
+Figure 1: Homeostatic tissue state in the absence of cancer. The pink cells are a highlighted lineage that has maxxed out its divison counter
+***
+
+### Cancer Dynamics
+![task6_introducing_cancer_cell](https://github.com/user-attachments/assets/5f3ddfa9-9b52-4e44-ab34-efaf6df6f92c)
+Figure 2: The dark gray agents started as one instance of a mutated cell that has taken over much of the oxygen-rich area
+***
+
+### Radiation Zaps
+![task7_radiation_therp](https://github.com/user-attachments/assets/844bfd7d-2af0-42a0-818e-4c32b19cc6d2)
+
 ### A. ABM Structure and Components
 
 The model is defined by three primary computational components, translating the biological elements into discrete agents and environment objects:
@@ -34,19 +51,4 @@ The model's dynamics are driven by the following fixed parameters. This is essen
 * **Normal Division Threshold** ($\theta_{D}$): $0.6 \text{ } \text{O}_2$.
 * **Cancer Division Threshold** ($\theta_{D}^{\prime}$): $0.45 \text{ } \text{O}_2$.
 * **Max Treatment Kill Rate** ($P_{\text{kill, max}}$): $0.85$ (in the Green region).
-
 ***
-### Dynamic Visualizations
-
-## Homeostasis
-![task5_homeostasis](https://github.com/user-attachments/assets/a63cd7a7-ad1b-44ee-83c4-91bdd110346d)
-Figure 1: Homeostatic tissue state in the absence of cancer. The pink cells are a highlighted lineage that has maxxed out its divison counter
-***
-
-## Cancer Dynamics
-![task6_introducing_cancer_cell](https://github.com/user-attachments/assets/5f3ddfa9-9b52-4e44-ab34-efaf6df6f92c)
-Figure 2: The dark gray agents started as one instance of a mutated cell that has taken over much of the oxygen-rich area
-***
-
-## Radiation Zaps
-![task7_radiation_therp](https://github.com/user-attachments/assets/844bfd7d-2af0-42a0-818e-4c32b19cc6d2)
