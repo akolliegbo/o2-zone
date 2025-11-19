@@ -3,7 +3,7 @@ like the twilight zone but its o2
 
 ***
 
-THIS is what I wanna be doing in my PhD well maybe not like this this but yk.  In the future I will look back at this model and chuckle at its juvinile nature, so for now I look forward to all the research in my years to come! 
+In the future I will look back at this model and chuckle at its juvinile nature, so for now I look forward to all the research in my years to come! 
 
 Now on to the cool stuff...
 
