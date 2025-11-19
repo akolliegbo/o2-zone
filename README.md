@@ -40,11 +40,12 @@ The model's dynamics are driven by the following fixed parameters. This is essen
 
 ## Homeostasis
 ![task5_homeostasis](https://github.com/user-attachments/assets/a63cd7a7-ad1b-44ee-83c4-91bdd110346d)
+Figure 1: Homeostatic tissue state in the absence of cancer. The pink cells are a highlighted lineage that has maxxed out its divison counter
 ***
 
 ## Cancer Dynamics
 ![task6_introducing_cancer_cell](https://github.com/user-attachments/assets/5f3ddfa9-9b52-4e44-ab34-efaf6df6f92c)
-
+Figure 2: The dark gray agents started as one instance of a mutated cell that has taken over much of the oxygen-rich area
 ***
 
 ## Radiation Zaps
